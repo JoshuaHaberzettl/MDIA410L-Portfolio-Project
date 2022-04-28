@@ -87,6 +87,7 @@ public class EnemyAI : MonoBehaviour
 
         if (!alreadyAttacked)
         {
+            
             Debug.Log("attack here");
             //Attack mechanics here--- Probably need to get child weapon and call shooting function from there.
             alreadyAttacked = true;
