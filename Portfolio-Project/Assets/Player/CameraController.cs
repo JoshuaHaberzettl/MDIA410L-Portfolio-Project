@@ -29,6 +29,12 @@ namespace Player
         
         private void Update()
         {
+            if (xSensitivity != PlayerPrefs.GetFloat("PlayersSensitivity") ||
+                ySensitivity != PlayerPrefs.GetFloat("PlayersSensitivity"))
+            {
+                xSensitivity = PlayerPrefs.GetFloat("PlayersSensitivity");
+                ySensitivity = PlayerPrefs.GetFloat("PlayersSensitivity");
+            }
             // Camera Control
             // Get input
             _lookX *= (xSensitivity * Time.deltaTime);

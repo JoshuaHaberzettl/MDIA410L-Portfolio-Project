@@ -18,16 +18,19 @@ namespace Player
 
         private void Update()
         {
-            // If they press the button and can shoot
-            if (_isShooting && _canShoot)
+            if (Time.timeScale == 1)
             {
-                ShootProjectile();
-                _canShoot = false;
-            }
-            // If they are not pressing the button let them shoot again -> creates semi auto functionality
-            else if (!_isShooting && !_canShoot)
-            {
-                _canShoot = true;
+                // If they press the button and can shoot
+                if (_isShooting && _canShoot)
+                {
+                    ShootProjectile();
+                    _canShoot = false;
+                }
+                // If they are not pressing the button let them shoot again -> creates semi auto functionality
+                else if (!_isShooting && !_canShoot)
+                {
+                    _canShoot = true;
+                }
             }
         }
 

@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class MenuManagement : MonoBehaviour
 {
     //MenuNavigation
-    public enum MenuStates { Main, Settings }
+    public enum MenuStates { Main, Settings,Playing }
     public static MenuStates currentstate;
 
     public GameObject mainMenu;
@@ -46,7 +46,17 @@ public class MenuManagement : MonoBehaviour
     }
     public void Awake()
     {
-        currentstate = MenuStates.Main;
+        if (SceneManager.GetActiveScene().name == "Menus")
+        {
+            currentstate = MenuStates.Main;
+        }
+
+        if (SceneManager.GetActiveScene().name == "Test-Character")
+        {
+            currentstate = MenuStates.Playing;
+        }
+
+
     }
 
     // Update is called once per frame
@@ -57,6 +67,11 @@ public class MenuManagement : MonoBehaviour
 
             case MenuStates.Main:
                 mainMenu.SetActive(true);
+                Settings.SetActive(false);
+                break;
+
+            case MenuStates.Playing:
+                mainMenu.SetActive(false);
                 Settings.SetActive(false);
                 break;
 
@@ -77,9 +92,20 @@ public class MenuManagement : MonoBehaviour
         currentstate = MenuStates.Main;
     }
 
+    public void GoPlay()
+    {
+        currentstate = MenuStates.Playing;
+    }
+
     public void GoLevel()
     {
         SceneManager.LoadScene("Test-Character");
+    }
+
+    public void GoMenus()
+    {
+        
+        SceneManager.LoadScene("Menus");
     }
 
     public void ExitGame()
@@ -116,7 +142,7 @@ public class MenuManagement : MonoBehaviour
         }
 
     }
-    private void Load()
+    public void Load()
     {
      
         bool fullscreen = intToBool(PlayerPrefs.GetInt("fullscreen"));
