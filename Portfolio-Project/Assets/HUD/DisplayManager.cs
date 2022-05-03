@@ -16,6 +16,7 @@ public class DisplayManager : MonoBehaviour
     {
         EnemiesTotal = 25;
         EnemiesLeft = EnemiesTotal;
+        
     }
 
     // Update is called once per frame
@@ -30,7 +31,7 @@ public class DisplayManager : MonoBehaviour
 
     void getTime()
     {
-        timer.text = Time.timeSinceLevelLoad.ToString(); //Need a trigger to stop updating
+        timer.text = Timer.timerText; //Need a trigger to stop updating
     }
     void setTime()
     {
