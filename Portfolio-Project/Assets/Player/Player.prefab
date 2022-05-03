@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7267478569771961370}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.33, z: 0.57}
+  m_LocalPosition: {x: 0, y: 0.63, z: 0.43}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7267478570229768794}
@@ -147,7 +147,7 @@ GameObject:
   - component: {fileID: 7267478570229768798}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -293,5 +293,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerCam: {fileID: 7267478570128885273}
-  projectile: {fileID: 4699734525315312340, guid: a73bbd029a29e6c4d900e8608c8bfcfd, type: 3}
+  projectile: {fileID: 1473007591874996, guid: 4d39b5c1b669ed04e93e5d39e8156b1b, type: 3}
   shotPoint: {fileID: 7267478569771961371}

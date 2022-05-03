@@ -5366,6 +5366,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7267478569771961370, guid: 3b5ca7c1e54376d4ab5fcf7cabc0a0aa, type: 3}
+      propertyPath: m_TagString
+      value: ShotPoint
+      objectReference: {fileID: 0}
     - target: {fileID: 7267478570229768790, guid: 3b5ca7c1e54376d4ab5fcf7cabc0a0aa, type: 3}
       propertyPath: m_Name
       value: Player
@@ -5422,5 +5426,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7267478570229768798, guid: 3b5ca7c1e54376d4ab5fcf7cabc0a0aa, type: 3}
+      propertyPath: projectile
+      value: 
+      objectReference: {fileID: 1473007591874996, guid: 4d39b5c1b669ed04e93e5d39e8156b1b, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b5ca7c1e54376d4ab5fcf7cabc0a0aa, type: 3}
