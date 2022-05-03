@@ -19,10 +19,22 @@ namespace Player
         private void Start()
         {
             Cursor.lockState = CursorLockMode.Locked;
+            if (PlayerPrefs.HasKey("PlayersSensitivity"))
+            {
+
+                xSensitivity = PlayerPrefs.GetFloat("PlayersSensitivity");
+                ySensitivity = PlayerPrefs.GetFloat("PlayersSensitivity");
+            }
         }
         
         private void Update()
         {
+            if (xSensitivity != PlayerPrefs.GetFloat("PlayersSensitivity") ||
+                ySensitivity != PlayerPrefs.GetFloat("PlayersSensitivity"))
+            {
+                xSensitivity = PlayerPrefs.GetFloat("PlayersSensitivity");
+                ySensitivity = PlayerPrefs.GetFloat("PlayersSensitivity");
+            }
             // Camera Control
             // Get input
             _lookX *= (xSensitivity * Time.deltaTime);

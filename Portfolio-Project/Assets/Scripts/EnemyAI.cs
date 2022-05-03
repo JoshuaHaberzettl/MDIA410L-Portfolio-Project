@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using TMPro;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(NavMeshAgent))]
 public class EnemyAI : MonoBehaviour
@@ -25,12 +27,20 @@ public class EnemyAI : MonoBehaviour
     public float sightRange, attackRange;
     public bool playerInSightRange, playerInAttackrange;
 
+    //Health vars
+    public float health;
+    private float maxHealth;
+    public TextMeshPro HealthTracker;
+    public Image healthBar;
+
     // Start is called before the first frame update
     void Start()
     {
+        maxHealth = health;
         player = GameObject.FindGameObjectWithTag("Player").transform;
         agent = GetComponent<NavMeshAgent>();
-    
+        
+
     }
 
     // Update is called once per frame
@@ -51,6 +61,8 @@ public class EnemyAI : MonoBehaviour
         {
             Attack();
         }
+        HealthTracker.text = "Health:" + health;
+        healthBar.fillAmount = health / maxHealth;
     }
 
     private void Patrol()
@@ -87,6 +99,7 @@ public class EnemyAI : MonoBehaviour
 
         if (!alreadyAttacked)
         {
+            
             Debug.Log("attack here");
             //Attack mechanics here--- Probably need to get child weapon and call shooting function from there.
             alreadyAttacked = true;
@@ -111,5 +124,16 @@ public class EnemyAI : MonoBehaviour
     private void ResetAttack()
     {
         alreadyAttacked = false;
+    }
+
+    public void TakeDamage(int damage)
+    {
+        health -= damage;
+        Debug.Log(health);
+
+        if (health <= 0)
+        {
+            Invoke("DestroyEnemy", .5f);
+        }
     }
 }
