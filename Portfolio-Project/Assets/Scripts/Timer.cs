@@ -35,7 +35,7 @@ public class Timer : MonoBehaviour
         timerText = TimeDisplayText(minutes,seconds);
     }
 
-    void ResetTimer()
+    public void ResetTimer()
     {
         TimerStarted = false;
         minutes = 0;
@@ -85,29 +85,12 @@ public class Timer : MonoBehaviour
         
     }
 
-    void changeTimerState()
+    public void changeTimerState()
     {
         TimerStarted = !TimerStarted;
     }
 
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.tag == "Player" && TimerStarted == false)
-        {
-            Debug.Log("Start");
-            changeTimerState();
-        }
-        if (other.tag == "Player" && seconds>1f && TimerStarted ==true)
-        {
-            Debug.Log("Stop");
-            changeTimerState();
-        }
-        
-
-
-
-
-    }
+   
 
    
 }
