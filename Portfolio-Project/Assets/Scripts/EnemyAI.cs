@@ -133,6 +133,7 @@ public class EnemyAI : MonoBehaviour
 
         if (health <= 0)
         {
+            DisplayManager.EnemiesLeft -= 1;
             Invoke("DestroyEnemy", .5f);
         }
     }

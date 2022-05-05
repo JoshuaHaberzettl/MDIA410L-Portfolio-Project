@@ -13,6 +13,7 @@ public class MenuManagement : MonoBehaviour
 
     public GameObject mainMenu;
     public GameObject Settings;
+   
 
     //Settings for Volume
     [SerializeField] Slider volumeSlider;
@@ -41,6 +42,7 @@ public class MenuManagement : MonoBehaviour
             volumeSlider.value = .5f;
             Screen.fullScreen = false;
             MyDropdown.value = 0;
+            SensitiviyValue = 50f;
 
         }
     }
