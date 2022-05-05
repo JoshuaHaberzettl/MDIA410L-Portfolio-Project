@@ -1,4 +1,4 @@
-//using Sound;
+using Sound;
 using UnityEngine;
 
 namespace Player
@@ -54,7 +54,7 @@ namespace Player
             var projectileObj = Instantiate(projectile, shotPoint.position, Quaternion.identity) as GameObject;
             projectileObj.GetComponent<Rigidbody>().velocity = (_destination - shotPoint.position).normalized * _speed;
             
-            //SoundManager.Instance.PlayShoot();
+            SoundManager.Instance.PlayShoot();
         }
 
         public void PassInput(bool isShooting)
