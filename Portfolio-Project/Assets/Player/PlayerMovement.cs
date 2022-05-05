@@ -1,3 +1,4 @@
+using Sound;
 using UnityEngine;
 
 namespace Player
@@ -37,6 +38,10 @@ namespace Player
         
         // Quit variable
         private bool _isQuitPressed;
+        
+        // Sound variable
+        private float _footstepCooldown = .4f;
+        private float _currentCooldown = 0f;
 
 
         private void Awake()
@@ -85,6 +90,22 @@ namespace Player
         
             HandleGravity();
             HandleJump();
+            
+            // Call footstep if moving on ground
+            if (_characterController.isGrounded && (_currentMovement.x != 0 || _currentMovement.z != 0))
+            {
+                // Increment timer, twice if sprinting
+                _currentCooldown += Time.deltaTime;
+                if (_isSprintPressed)
+                {
+                    _currentCooldown += Time.deltaTime * .4f;
+                }
+                if (_currentCooldown >= _footstepCooldown)
+                {
+                    SoundManager.Instance.PlayFootstep();
+                    _currentCooldown = 0;
+                }
+            }
         }
 
         /// <summary>
@@ -102,7 +123,7 @@ namespace Player
                 _startFalling = true;
             }
             // Falling if negative y movement or not jumping/standing (fall off something)
-            _isFalling = (_currentMovement.y < _groundedGravity) || (!_isJumping && !_characterController.isGrounded);
+            _isFalling = (_currentMovement.y < _groundedGravity*2) || (!_isJumping && !_characterController.isGrounded);
             if (_isFalling)
             {
                 _isJumping = false;
@@ -120,7 +141,7 @@ namespace Player
                 _startFalling = false;
                 if (!_isJumpPressed)
                     _letGoOfJump = true;
-                // Apply low gravity value so .isGrounded works... better
+                // Apply low gravity value so .isGrounded works, well... better
                 _currentMovement.y = _groundedGravity;
                 _currentSprintMovement.y = _groundedGravity;
 
