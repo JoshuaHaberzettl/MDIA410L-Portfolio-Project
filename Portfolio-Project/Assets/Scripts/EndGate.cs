@@ -1,35 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
+using Save;
 using UnityEngine;
 
 public class EndGate : MonoBehaviour
 {
     public Timer myTimer;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 
     void OnTriggerEnter(Collider other)
     {
-
-        if (other.tag == "Player" && myTimer.seconds > 1f && Timer.TimerStarted == true)
+        if (other.CompareTag("Player") && myTimer.seconds > 1f && Timer.TimerStarted)
         {
             Debug.Log("Stop");
             myTimer.changeTimerState();
             //Record Time here for leaderboards
+            Saving.Instance.Save(myTimer);
         }
-
-
-
-
-
     }
 }

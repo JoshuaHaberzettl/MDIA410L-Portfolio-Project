@@ -1,8 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using System.Globalization;
-using Unity.VisualScripting;
 
 public class Timer : MonoBehaviour
 {
@@ -10,10 +6,10 @@ public class Timer : MonoBehaviour
 
     public float seconds;
 
-    public static string timerText;
+    public static string TimerText;
 
     public static bool TimerStarted;
-    // Start is called before the first frame update
+    
     void Start()
     {
        ResetTimer();
@@ -21,18 +17,17 @@ public class Timer : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (TimerStarted == true)
+        if (TimerStarted)
         {
             StartTimer();
         }
     }
-    // Update is called once per frame
+    
     public void StartTimer()
     {
-        
-        secondsPassed();
-        minutesPassed(seconds);
-        timerText = TimeDisplayText(minutes,seconds);
+        SecondsPassed();
+        MinutesPassed(seconds);
+        TimerText = TimeDisplayText(minutes,seconds);
     }
 
     public void ResetTimer()
@@ -42,9 +37,8 @@ public class Timer : MonoBehaviour
         seconds = 0f;
     }
 
-    public int minutesPassed(float secondscounted)
+    public int MinutesPassed(float secondscounted)
     {
-        
         if (Time.timeScale>0 && secondscounted >= 60)
         {
             minutes += 1;
@@ -54,14 +48,13 @@ public class Timer : MonoBehaviour
         return minutes;
     }
 
-    public float secondsPassed()
+    public float SecondsPassed()
     {
-        if (Time.timeScale > 0 && TimerStarted==true)
+        if (Time.timeScale > 0 && TimerStarted)
         {
             seconds += 1*Time.deltaTime;
         }
-        
-        
+
         return seconds;
     }
 
@@ -73,13 +66,13 @@ public class Timer : MonoBehaviour
         string secondsText = seconds.ToString();
         if (seconds < 10)
         {
-            string MyTimer = minutesText + ":0" + secondsText;
-            return MyTimer;
+            string myTimer = minutesText + ":0" + secondsText;
+            return myTimer;
         }
         else
         {
-            string MyTimer = minutesText + ":" + secondsText;
-            return MyTimer;
+            string myTimer = minutesText + ":" + secondsText;
+            return myTimer;
         }
         
         

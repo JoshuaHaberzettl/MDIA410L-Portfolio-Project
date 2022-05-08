@@ -1,25 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class StartGate : MonoBehaviour
 {
     public Timer myTimer;
-    // Start is called before the first frame update
-    void Start()
+
+    private void OnTriggerEnter(Collider other)
     {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.tag == "Player" && Timer.TimerStarted == false)
+        if (other.CompareTag("Player") && !Timer.TimerStarted)
         {
             Debug.Log("Start");
             myTimer.ResetTimer();
