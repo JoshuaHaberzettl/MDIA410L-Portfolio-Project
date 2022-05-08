@@ -31,7 +31,7 @@ public class DisplayManager : MonoBehaviour
 
     void getTime()
     {
-        timer.text = Timer.timerText; //Need a trigger to stop updating
+        timer.text = Timer.TimerText; //Need a trigger to stop updating
     }
     void setTime()
     {
