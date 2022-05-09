@@ -45,6 +45,7 @@ namespace Save
 		private void Start()
 		{
 			LoadGame();
+			Leaderboard.Instance.UpdateBoard(_times);
 		}
 		
 		
@@ -86,6 +87,14 @@ namespace Save
 			string json = JsonUtility.ToJson(saveObject);
 			// Actually writes the data in the json file
 			File.WriteAllText(Application.dataPath + "/Save/save.json", json);
+			
+			Leaderboard.Instance.UpdateBoard(_times);
+		}
+		
+		public string GetHighScore()
+		{
+			return _times [0];
 		}
 	}
+
 }

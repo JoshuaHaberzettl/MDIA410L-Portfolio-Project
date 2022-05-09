@@ -14,9 +14,11 @@
 #pragma warning disable 0219 // variable assigned but not used.
 #pragma warning disable 0414 // private field assigned but not used.
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class ProjectileMoveScript : MonoBehaviour {
 
@@ -39,6 +41,12 @@ public class ProjectileMoveScript : MonoBehaviour {
 	private Rigidbody rb;
     private RotateToMouseScript rotateToMouse;
     private GameObject target;
+
+	// Destroy proj after 10 seconds
+	private void Awake()
+	{
+		Destroy(gameObject, 10);
+	}
 
 	void Start () {
         startPos = transform.position;
