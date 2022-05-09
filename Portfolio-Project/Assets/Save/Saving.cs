@@ -9,8 +9,6 @@ namespace Save
 	{
 		public static Saving Instance;
 		
-		//[SerializeField]
-		//private Timer timer;
 		private List<string> _times = new List<string>();
 
 		private class SaveObject
@@ -58,8 +56,6 @@ namespace Save
 			SaveObject saveObject = JsonUtility.FromJson<SaveObject>(saveString);   
 			// Gets the saved times from the json file
 			_times = saveObject.SaveData;
-        
-			Debug.Log("Loaded. The times are: " + _times[0]);
 		}
 
 		public void Save(Timer timer)
@@ -93,7 +89,10 @@ namespace Save
 		
 		public string GetHighScore()
 		{
-			return _times [0];
+			if (_times.Count > 0)
+				return _times [0];
+			else
+				return "-:--";
 		}
 	}
 

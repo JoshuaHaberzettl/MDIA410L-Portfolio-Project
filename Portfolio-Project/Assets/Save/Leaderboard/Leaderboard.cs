@@ -27,7 +27,7 @@ namespace Save
 
 		public void UpdateBoard(List<string> scores)
 		{
-			for (int i = 0; i < scoreText.Count; i++)
+			for (int i = 0; i < scores.Count; i++)
 			{
 				if (scoreText [i] != null)
 				{

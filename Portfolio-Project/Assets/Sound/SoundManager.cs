@@ -8,7 +8,8 @@ namespace Sound
 		public static SoundManager Instance;
 
 		[SerializeField]
-		private AudioSource shootSource, footstepSource;
+		private AudioSource shootSource, footstepSource, enemyDeathSource, bulletHitSource, 
+			musicSource, doorSource, winSource, buttonSource;
 
 		private void Awake()
 		{
@@ -45,6 +46,45 @@ namespace Sound
 		{
 			Randomize(footstepSource);
 			footstepSource.Play();
+		}
+
+		public void PlayEnemyDeath()
+		{
+			Randomize(enemyDeathSource);
+			enemyDeathSource.Play();
+		}
+		
+		public void PlayBulletHit()
+		{
+			Randomize(bulletHitSource);
+			bulletHitSource.Play();
+		}
+		
+		public void PlayMusic()
+		{
+			musicSource.Play();
+		}
+
+		public void StopMusic()
+		{
+			musicSource.Stop();
+		}
+		
+		public void PlayDoorOpen()
+		{
+			Randomize(doorSource);
+			doorSource.Play();
+		}
+		
+		public void PlayWin()
+		{
+			winSource.Play();
+		}
+		
+		public void PlayButtonClick()
+		{
+			Randomize(buttonSource);
+			buttonSource.Play();
 		}
 	}
 }
