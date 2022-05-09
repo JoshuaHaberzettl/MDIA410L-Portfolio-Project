@@ -101,7 +101,7 @@ public class MenuManagement : MonoBehaviour
 
     public void GoLevel()
     {
-        SceneManager.LoadScene("Test-Character");
+        SceneManager.LoadScene("Main");
     }
 
     public void GoMenus()

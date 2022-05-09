@@ -10,6 +10,8 @@ namespace Player
         private float ySensitivity = 20f;
         [SerializeField]
         private Transform playerBody;
+        [SerializeField]
+        private Transform gunPosition;
         private float _xRotation;
     
         private Vector2 _lookInput;
@@ -21,7 +23,6 @@ namespace Player
             Cursor.lockState = CursorLockMode.Locked;
             if (PlayerPrefs.HasKey("PlayersSensitivity"))
             {
-
                 xSensitivity = PlayerPrefs.GetFloat("PlayersSensitivity");
                 ySensitivity = PlayerPrefs.GetFloat("PlayersSensitivity");
             }
@@ -46,6 +47,7 @@ namespace Player
             
             // Apply rotation
             transform.localRotation = Quaternion.Euler(_xRotation, 0f, 0f);
+            gunPosition.localRotation = Quaternion.Euler(_xRotation, 0f, 0f);
             playerBody.Rotate(Vector3.up * _lookX);
         }
 
