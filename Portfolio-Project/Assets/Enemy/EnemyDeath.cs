@@ -10,8 +10,10 @@ namespace Enemy
             if (collision.gameObject.CompareTag("Bullet"))
             {
                 SoundManager.Instance.PlayEnemyDeath();
-                Destroy(gameObject);
+                DisplayManager.EnemiesLeft--;
+                gameObject.SetActive(false);
             }
         }
     }
+    
 }

@@ -1,8 +1,12 @@
+using System.Collections.Generic;
+using Sound;
 using UnityEngine;
 
 public class StartGate : MonoBehaviour
 {
     public Timer myTimer;
+    public List<GameObject> enemies;
+    public List<GameObject> doors;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -10,8 +14,19 @@ public class StartGate : MonoBehaviour
         {
             Debug.Log("Start");
             myTimer.ResetTimer();
-            //also want to reset course here probably
             myTimer.changeTimerState();
+            
+            // Reset course
+            foreach (var enemy in enemies)
+            {
+                enemy.SetActive(true);
+            }
+            foreach (var door in doors)
+            {
+                door.SetActive(true);
+            }
+
+            SoundManager.Instance.PlayMusic();
         }
     }
 }

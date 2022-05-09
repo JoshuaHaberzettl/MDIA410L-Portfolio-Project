@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Save;
@@ -7,37 +8,38 @@ using TMPro;
 public class DisplayManager : MonoBehaviour
 {
     public TextMeshProUGUI timer;
-   public TextMeshProUGUI EnemyCounter;
-   public TextMeshProUGUI HighScore;
+    public TextMeshProUGUI EnemyCounter;
+    public TextMeshProUGUI HighScore;
     public static int EnemiesLeft;
-    public static int EnemiesTotal;
+    private int _enemiesTotal;
     
     // Start is called before the first frame update
     void Start()
     {
-        EnemiesTotal = 25;
-        EnemiesLeft = EnemiesTotal;
+        _enemiesTotal = 26;
+        EnemiesLeft = _enemiesTotal;
         
     }
 
     // Update is called once per frame
     void Update()
     {
-
-        setTime();
+        GetTime();
         HighScore.text = Saving.Instance.GetHighScore();
-        EnemyCounter.text = "Enemies: "+ EnemiesLeft.ToString() + "/" + EnemiesTotal.ToString();
-        
+        EnemyCounter.text = EnemiesLeft.ToString() + "/" + _enemiesTotal.ToString();
     }
 
-    void getTime()
+    private void GetTime()
     {
-        timer.text = Timer.TimerText; //Need a trigger to stop updating
+        timer.text = Timer.TimerText; 
     }
+    
+    /*
     void setTime()
     {
         Invoke("getTime", .5f);
     }
+    */
 
     
 }

@@ -17,6 +17,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Sound;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -138,6 +139,7 @@ public class ProjectileMoveScript : MonoBehaviour {
                 }
 
                 StartCoroutine(DestroyParticle(0f));
+				SoundManager.Instance.PlayBulletHit();
             }
         }
         else

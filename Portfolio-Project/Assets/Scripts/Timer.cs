@@ -1,3 +1,4 @@
+using System.Globalization;
 using UnityEngine;
 
 public class Timer : MonoBehaviour
@@ -63,7 +64,7 @@ public class Timer : MonoBehaviour
     public string TimeDisplayText(int minutes, float seconds)
     {
         string minutesText = minutes.ToString();
-        string secondsText = seconds.ToString();
+        string secondsText = seconds.ToString(CultureInfo.InvariantCulture);
         if (seconds < 10)
         {
             string myTimer = minutesText + ":0" + secondsText;

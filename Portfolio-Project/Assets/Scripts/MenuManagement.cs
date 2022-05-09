@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
+using Sound;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -87,11 +88,13 @@ public class MenuManagement : MonoBehaviour
     public void GoSettings()
     {
         currentstate = MenuStates.Settings;
+        SoundManager.Instance.PlayButtonClick();
     }
 
     public void GoMain()
     {
         currentstate = MenuStates.Main;
+        SoundManager.Instance.PlayButtonClick();
     }
 
     public void GoPlay()
@@ -106,12 +109,12 @@ public class MenuManagement : MonoBehaviour
 
     public void GoMenus()
     {
-        
         SceneManager.LoadScene("Menus");
     }
 
     public void ExitGame()
     {
+        SoundManager.Instance.PlayButtonClick();
         Application.Quit();
     }
 
@@ -160,6 +163,7 @@ public class MenuManagement : MonoBehaviour
 
     public void Save()
     {
+        SoundManager.Instance.PlayButtonClick();
         PlayerPrefs.SetInt("fullscreen", boolToInt(Screen.fullScreen));
         PlayerPrefs.SetInt("fullscreenToggle", boolToInt(MyToggle.isOn));
         PlayerPrefs.SetInt("DropdownValue", MyDropdown.value);
@@ -186,6 +190,6 @@ public class MenuManagement : MonoBehaviour
     public void GetNewSensitivity(string NewSense)
     {
         SensitiviyValue=float.Parse(NewSense, CultureInfo.InvariantCulture.NumberFormat);
-        Debug.Log(SensitiviyValue);
+        Debug.Log("Sensitivity: " + SensitiviyValue);
     }
 }
