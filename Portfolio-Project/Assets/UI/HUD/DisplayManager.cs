@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Save;
 using UnityEngine;
 using TMPro;
 
@@ -24,7 +25,7 @@ public class DisplayManager : MonoBehaviour
     {
 
         setTime();
-        //HighScore.text = Scores[0].ToString()?
+        HighScore.text = Saving.Instance.GetHighScore();
         EnemyCounter.text = "Enemies: "+ EnemiesLeft.ToString() + "/" + EnemiesTotal.ToString();
         
     }
