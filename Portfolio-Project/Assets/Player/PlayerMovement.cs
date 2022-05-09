@@ -43,7 +43,6 @@ namespace Player
         private float _footstepCooldown = .4f;
         private float _currentCooldown = 0f;
 
-
         private void Awake()
         {
             _characterController = GetComponent<CharacterController>();
@@ -57,13 +56,16 @@ namespace Player
 
         private void Update()
         {
+            /* Don't use bc of menu quit
             // See if Quitting
             if (_isQuitPressed)
             {
                 // Close the application
                 Application.Quit();
-            }
+            }*/
 
+            if (Time.timeScale == 1)
+            
             // Apply movement to character depending on if they're sprinting
             if (_isSprintPressed)
             {
