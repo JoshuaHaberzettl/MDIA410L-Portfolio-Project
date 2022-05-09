@@ -46,5 +46,10 @@ namespace Sound
 			Randomize(footstepSource);
 			footstepSource.Play();
 		}
+
+		public void PlayEnemyDeath()
+		{
+			// TODO IMPLEMENT
+		}
 	}
 }
